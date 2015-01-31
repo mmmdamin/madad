@@ -1,14 +1,14 @@
 from audioop import reverse
 
 from django.contrib.auth import login as dj_login
-
 from django.contrib.auth import logout as dj_logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 
+from account.crawl import get_profs
 from account.forms import SignInForm, PasswordForm
-
 
 
 def login(request):
@@ -54,3 +54,11 @@ def password_reset_change(request):
 
 def dashboard(request):
     return
+
+
+@login_required
+def get_professors(request):
+    if not request.user.is_superuser:
+        raise PermissionDenied
+    get_profs()
+    return HttpResponse('success')

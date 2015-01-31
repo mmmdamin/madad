@@ -10,6 +10,7 @@ LEVEL = Choices((1, 'bs'), (2, 'ms'), (3, 'doc'))
 
 
 class Member(AbstractUser):
+    image = models.ImageField(blank=True, null=True, upload_to='images')
     objects = InheritanceManager()
 
     def is_student(self, page_id):
@@ -30,3 +31,5 @@ class Professor(Member):
     room_number = models.CharField(max_length=7, null=True, blank=True)
     room_phone = models.CharField(max_length=15, null=True, blank=True)
     research_interest = models.TextField(null=True, blank=True)
+    link = models.URLField(null=True, blank=True)
+    education = models.TextField(null=True, blank=True)
