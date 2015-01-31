@@ -1,0 +1,20 @@
+[
+    {
+        "pk": 1,
+        "model": "account.member",
+        "fields": {
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2014-09-08T21:41:24.555Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$QRlUuuebkxNv$e42qiPvoi7E9MtAvr6oJzasHTq9N3xbbJBCtu54uyro=",
+            "email": "mmmdamin@gmail.com",
+            "date_joined": "2014-09-08T21:41:24.555Z"
+        }
+    }
+]
