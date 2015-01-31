@@ -53,7 +53,12 @@ def password_reset_change(request):
 
 
 def dashboard(request):
-    return
+    return render(
+        request,
+        'dashboard.html',
+        {
+
+        })
 
 
 @login_required
@@ -62,3 +67,4 @@ def get_professors(request):
         raise PermissionDenied
     get_profs()
     return HttpResponse('success')
+
