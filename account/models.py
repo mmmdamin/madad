@@ -1,5 +1,32 @@
 from django.contrib.auth.models import AbstractUser
+from django.db import models
+from model_utils import Choices
+from model_utils.managers import InheritanceManager
+
+from base.models import EducationalYear
+
+
+LEVEL = Choices((1, 'bs'), (2, 'ms'), (3, 'doc'))
 
 
 class Member(AbstractUser):
-    pass
+    objects = InheritanceManager()
+
+    def is_student(self, page_id):
+        sub_members = Member.objects.filter(id=self.id).select_subclasses()
+        if sub_members:
+            x = sub_members.last()
+            return isinstance(x, Student)
+        return False
+
+
+class Student(Member):
+    level = models.PositiveSmallIntegerField(choices=LEVEL, blank=True, null=True)
+    start_year = models.ForeignKey(EducationalYear, blank=True, null=True)
+    std_id = models.CharField(max_length=20, null=True, blank=True)
+
+
+class Professor(Member):
+    room_number = models.CharField(max_length=7, null=True, blank=True)
+    room_phone = models.CharField(max_length=15, null=True, blank=True)
+    research_interest = models.TextField(null=True, blank=True)
