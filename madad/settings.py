@@ -60,6 +60,8 @@ INSTALLED_APPS = (
 
     'base',
     'account',
+    'page',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -119,3 +121,20 @@ EMAIL_HOST_PASSWORD = ''
 MANDRILL_API_KEY = ""
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_CONFIGS = {
+    'full_ckeditor': {
+        'toolbar': 'Full',
+        'width' : '500',
+
+    },
+    'basic_ckeditor': {
+        'toolbar': 'Basic',
+        'width' : '500',
+    },
+}
+
+LOGIN_URL = '/'

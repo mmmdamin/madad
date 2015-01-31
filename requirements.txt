@@ -11,3 +11,6 @@ whitenoise
 django-model-utils
 django-password-reset
 djrill
+beautifulsoup4
+django-ckeditor-updated
+Pillow
