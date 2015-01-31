@@ -1,0 +1,38 @@
+{% load static %}
+<!-- In the name of god :D -->
+<!doctype html>
+<html>
+<head>
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" language="JavaScript">
+        var $window = $(window);
+        window.csrf_token = "{{ csrf_token }}";
+    </script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/royafont.css' %}"/>
+    {% block extra_styles %}{% endblock %}
+</head>
+<body>
+{% block navbar %}{% endblock %}
+{% block user_infos %}{% endblock %}
+<div class="margin-bottom-lg">
+    {% block body %}{% endblock %}
+</div>
+{% block footer %}
+    <footer class="footer base navbar-fixed-bottom">
+        <p class="english">
+            Designed by <a href="http://amin.sabbaghian.ir/" target="_blank">A'min</a>, Alireza, Mohsen, Heydar. <span
+                class="terminator">Thank you <a
+                href="http://course.sabbaghian.ir/" target="_blank">Course.Sabbaghian</a> :-)</span>
+        </p>
+    </footer>
+{% endblock %}
+</body>
+</html>

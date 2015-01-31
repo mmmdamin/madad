@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_app_filters %}
+{% block title %}Login{% endblock title %}
+{% block extra_js %}
+    <script type="text/javascript" language="JavaScript" src="{% static 'js/login.js' %}"></script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-2 col-centered">
+                <img src="{% static 'image/logo.png' %}" />
+            </div>
+
+        </div>
+        <div class="row">
+            <!--<div class="center-block col-md-6 col-md-offset-3 col-lg-5 col-lg-offset-3 ">-->
+            <form action="" method="post">
+                <div class="col-md-6 col-lg-5 col-centered">
+                    <div class="panel panel-primary ">
+                        <div class="panel-heading">Login</div>
+                        <div class="panel-body bg-whitesmoke">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <div id="username">Username</div>
+                                    </div>
+                                    <input type="text" class="form-control" name="username">
+
+                                    <div class="input-group-addon">@ce.sharif.edu</div>
+                                </div>
+                                <div>{{ form.errors.username }}</div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <div id="password">Password</div>
+                                    </div>
+                                    <input type="password" class="form-control" name="password">
+                                </div>
+                                <div>{{ form.errors.password }}</div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

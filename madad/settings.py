@@ -55,6 +55,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'south',
+
+    'base',
+    'account',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,3 +108,5 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+AUTH_USER_MODEL = 'account.Member'

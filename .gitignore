@@ -7,3 +7,4 @@
 .pydevproject
 .idea/
 dbsec.log
+db.sqlite3
