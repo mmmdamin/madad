@@ -6,7 +6,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^', include("base.urls")),
                        url(r'^accounts/', include("account.urls")),
 
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
