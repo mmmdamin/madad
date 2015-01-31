@@ -1,7 +1,7 @@
 [
     {
         "pk": 1,
-        "model": "account.member",
+        "model": "account.Member",
         "fields": {
             "username": "admin",
             "first_name": "",
@@ -12,7 +12,7 @@
             "last_login": "2014-09-08T21:41:24.555Z",
             "groups": [],
             "user_permissions": [],
-            "password": "pbkdf2_sha256$12000$QRlUuuebkxNv$e42qiPvoi7E9MtAvr6oJzasHTq9N3xbbJBCtu54uyro=",
+            "password": "pbkdf2_sha256$12000$5KyENGQWPwFU$6Kc6SbwOFd0h7Z6xXFredMBG8KSEePffs9TKVv9izrs=",
             "email": "mmmdamin@gmail.com",
             "date_joined": "2014-09-08T21:41:24.555Z"
         }
