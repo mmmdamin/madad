@@ -44,7 +44,7 @@ class Assignment(Named, Logged):
 
 
 class TeacherAssistant(models.Model):
-    page = models.ForeignKey('Page')
+    page = models.ForeignKey('Page', related_name='teacher_assistants')
     student = models.ForeignKey(Student)
     can_grade = models.BooleanField(default=False)
     can_add_resource = models.BooleanField(default=False)
@@ -53,7 +53,7 @@ class TeacherAssistant(models.Model):
     can_add_assignment = models.BooleanField(default=False)
 
 
-class Resource(models.Model):
+class Resource(Named):
     r_url = models.URLField(null=True, blank=True)
     r_file = models.FileField(null=True, blank=True, upload_to='resources')
     r_type = models.PositiveSmallIntegerField(choices=R_TYPE)
@@ -66,9 +66,22 @@ class Page(models.Model):
     text = RichTextField(config_name='full_ckeditor')
     image = models.ImageField(upload_to='/courses', null=True, blank=True)
 
+    def __unicode__(self):
+        s = ""
+        for item in self.offered_courses.all():
+            if s:
+                s += "|"
+            s += unicode(item)
+        return s
+
 
 class Comment(Logged):
     title = models.CharField(max_length=255)
     parent = models.ForeignKey('self')
     author = models.ForeignKey(Member)
     text = RichTextField(config_name='full_ckeditor')
+
+
+class Announcement(Logged):
+    text = RichTextField(config_name='full_ckeditor')
+    page = models.ForeignKey(Page, related_name="announcements")

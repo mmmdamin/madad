@@ -1,0 +1,33 @@
+{% extends 'page/course_page.html' %}
+{% load static %}
+{% load gravatar %}
+{% block title %}{{ offered_course }}{% endblock title %}
+{% block right_col_title %}
+    Resources
+{% endblock %}
+{% block right_col %}
+    <ul>
+        Files:
+        {% for item in all_files %}
+            <li>
+                <a target="_blank" href="{{ item.r_file.url }}">{{ item.name }}</a>
+            </li>
+        {% empty %}
+            <li><i>
+                No Files Yet
+            </i></li>
+        {% endfor %}
+    </ul>
+    <ul>
+        Links:
+        {% for item in all_links %}
+            <li>
+                <a target="_blank" href="{{ item.r_url }}">{{ item.name }}</a>
+            </li>
+        {% empty %}
+            <li><i>
+                No Links Yet
+            </i></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -16,6 +16,7 @@ from account.crawl import get_profs
 from account.forms import SignInForm, PasswordForm
 from account.models import Member, Student
 from base.utils import save_file
+from page.models import OfferedCourse
 
 
 def login(request):
@@ -61,11 +62,15 @@ def password_reset_change(request):
 
 @login_required
 def dashboard(request):
+    my_courses = []
+    for course in OfferedCourse.objects.all():
+        if request.user.id in course.students.values_list('id', flat=True):
+            my_courses.append(course)
     return render(
         request,
         'dashboard.html',
         {
-
+            'my_courses': my_courses,
         })
 
 

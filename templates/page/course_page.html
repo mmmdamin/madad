@@ -3,31 +3,89 @@
 {% load gravatar %}
 {% block title %}{{ offered_course }}{% endblock title %}
 {% block left_col_title %}
+    Main Menu
 {% endblock %}
 {% block left_col %}
     <ul>
         <li>
-            <a href=""></a>
-            Home
+            <a href="{% url 'course' offered_course.year.year offered_course.term offered_course.course.course_number offered_course.group_number %}">
+                Home
+            </a>
         </li>
         <li>
-            Syllabus
+            <a href="{% url 'course_item' offered_course.year.year offered_course.term offered_course.course.course_number offered_course.group_number 'assignments' %}">
+                Assignments</a>
         </li>
         <li>
-            Assignments
+            <a href="{% url 'course_item' offered_course.year.year offered_course.term offered_course.course.course_number offered_course.group_number 'grades' %}">
+                Grades</a>
         </li>
         <li>
-            Grades
+            <a href="{% url 'course_item' offered_course.year.year offered_course.term offered_course.course.course_number offered_course.group_number 'discussion' %}">
+                Discussion</a>
         </li>
         <li>
-            Discussion
+            <a href="{% url 'course_item' offered_course.year.year offered_course.term offered_course.course.course_number offered_course.group_number 'resources' %}">
+                Resources</a>
         </li>
         <li>
-            Resources
+            <a href="{% url 'course_item' offered_course.year.year offered_course.term offered_course.course.course_number offered_course.group_number 'previous' %}">
+                Other Offers</a>
         </li>
     </ul>
 {% endblock %}
 {% block right_col_title %}
+    {{ offered_course }}
 {% endblock %}
 {% block right_col %}
+    <ul>
+        Instructor:
+        <li>
+            <a href="mailto: {{ offered_course.professor.email }}">{{ offered_course.professor.get_full_name }}</a>
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        Details:
+        <li>
+            {{ offered_course.details }}
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        Teacher Assistants:
+        {% for TA in offered_course.page.last.teacher_assistants.all %}
+            <li>
+                +TA: <a href="mailto: {{ TA.student.email }}">{{ TA.student.get_full_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <ul>
+        Exam Time:
+        <li>
+            {{ offered_course.exam_time }}
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        Announcements:
+        <br>
+        {% for ann in offered_course.page.last.announcements.all %}
+            <li>
+                {{ ann.text|safe }}
+                <small class="pull-right">
+                    Create Date: {{ ann.created_at }} , Last Edit: {{ ann.updated_at }}
+                </small>
+                <br>
+            </li>
+            <hr>
+        {% empty %}
+            <li>
+                <i>
+                    Not Announcement Yet
+                </i>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
