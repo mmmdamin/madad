@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'south',
+    'ckeditor',
 
     'base',
     'account',
@@ -137,4 +138,4 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-LOGIN_URL = '/'
+LOGIN_URL = '/accounts/login'

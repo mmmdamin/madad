@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load gravatar %}
+{% block title %}{% endblock title %}
+{% block footer %}{% endblock %}
+{% block extra_styles %}
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
+{% block navbar %}{% endblock %}
+{% block user_infos %}
+    <header>
+        <div class="container">
+            <div class="row" style="margin-top: 20px">
+                <div class="col-lg-4 col-md-4">
+                    <div class="panel panel-default panel-background-color">
+                        <div class="panel-body">
+                            <div class="circle avatar"><img class="circle" src="{% gravatar_url user_email %}"></div>
+                            <span class="user name">{{ user }}</span>
+
+                            <div class="user actions pull-right">
+                                <a href="{% url 'password_reset_change' %}">Change Password</a>
+                                |
+                                <a href="{% url 'logout' %}">Logout</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4">
+                <div class="panel panel-primary panel-background-color">
+                    <div class="panel-heading">
+                        <span>{% block left_col_title %}
+                        {% endblock %}</span>
+
+                    </div>
+                    <div class="panel-body">
+                        {% block left_col %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8">
+                <div class="panel panel-primary panel-background-color">
+                    <div class="panel-heading">
+                        <span> {% block right_col_title %}
+                        {% endblock %}</span>
+
+                    </div>
+                    <div class="panel-body">
+                        {% block right_col %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

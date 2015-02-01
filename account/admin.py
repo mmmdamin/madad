@@ -1,8 +1,11 @@
 from django.contrib import admin
+from django.db.models import get_models, get_app
 
-from account.models import Member, Professor, Student
+for model in get_models(get_app('account')):
+    admin.site.register(model)
 
+for model in get_models(get_app('base')):
+    admin.site.register(model)
 
-admin.site.register(Member)
-admin.site.register(Professor)
-admin.site.register(Student)
+for model in get_models(get_app('page')):
+    admin.site.register(model)

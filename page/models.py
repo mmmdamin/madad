@@ -25,7 +25,7 @@ class OfferedCourse(models.Model):
 
     def __unicode__(self):
         return "%s-%d - %s - %s  " % (
-            unicode(self.course.course_number), self.group_number, unicode(self.course), self.professor.name)
+            unicode(self.course.course_number), self.group_number, unicode(self.course), self.professor.get_full_name())
 
 
 class Grade(Logged):
@@ -59,7 +59,7 @@ class Resource(models.Model):
 
 
 class Page(models.Model):
-    offered_courses = models.ManyToManyField(OfferedCourse, null=True, blank=True)
+    offered_courses = models.ManyToManyField(OfferedCourse, related_name='page', null=True, blank=True)
     resources = models.ManyToManyField(Resource)
     teacher_assistant = models.ManyToManyField(Student, through=TeacherAssistant)
     text = RichTextField(config_name='full_ckeditor')

@@ -1,0 +1,23 @@
+{% extends '2_col_base.html' %}
+{% load static %}
+{% load gravatar %}
+{% block title %}All Year-Terms{% endblock title %}
+{% block left_col_title %}
+    All Year-Terms
+{% endblock %}
+{% block left_col %}
+    <ul>
+        {% for item in year_term_list %}
+            <li>
+                <a href="{% url "term" item.year item.term.0 %}">
+                    {{ item.year }} - {{ item.term.1 }} - ({{ item.count }})
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block right_col_title %}
+    Ce Sharif
+{% endblock %}
+{% block right_col %}
+{% endblock %}

@@ -11,14 +11,7 @@ LEVEL = Choices((1, 'bs'), (2, 'ms'), (3, 'doc'))
 
 class Member(AbstractUser):
     image = models.ImageField(blank=True, null=True, upload_to='images')
-    objects = InheritanceManager()
 
-    def is_student(self, page_id):
-        sub_members = Member.objects.filter(id=self.id).select_subclasses()
-        if sub_members:
-            x = sub_members.last()
-            return isinstance(x, Student)
-        return False
 
 
 class Student(Member):

@@ -1,0 +1,18 @@
+{% extends 'page/all_year_term.html' %}
+{% load static %}
+{% load gravatar %}
+{% block title %}{{ year }} - {{ term.1 }}{% endblock title %}
+{% block right_col_title %}
+    {{ year }} - {{ term.1 }}
+{% endblock %}
+{% block right_col %}
+    <ul>
+        {% for item in offered_courses %}
+            <li>
+                <a href="{% url 'course' item.year.year item.term item.course.course_number item.group_number %}">
+                    {{ item }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
