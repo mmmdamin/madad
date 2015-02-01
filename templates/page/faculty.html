@@ -1,0 +1,42 @@
+{% extends 'page/faculties.html' %}
+{% load static %}
+{% load gravatar %}
+{% block title %}{{ offered_course }}{% endblock title %}
+{% block right_col_title %}
+    {{ prof_obj.get_full_name }}
+{% endblock %}
+{% block right_col %}
+    <ul>
+        {% if prof_obj.link %}
+            <li>
+                <a href="{{ prof_obj.link }}">
+                    Website
+                </a>
+            </li>
+            <hr>
+        {% endif %}
+        <li>
+            <a href="mailto: {{ prof_obj.email }}">
+                Mail
+            </a>
+        </li>
+        <hr>
+
+        <li>
+            {{ prof_obj.education }}
+        </li>
+        <hr>
+        <li>
+            {{ prof_obj.research_interest }}
+        </li>
+        <hr>
+        <li>
+            Room Number : {{ prof_obj.room_number }}
+        </li>
+        <hr>
+        <li>
+            Phone Number : {{ prof_obj.room_phone }}
+        </li>
+        <hr>
+    </ul>
+{% endblock %}

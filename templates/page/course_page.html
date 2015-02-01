@@ -41,7 +41,10 @@
     <ul>
         Instructor:
         <li>
-            <a href="mailto: {{ offered_course.professor.email }}">{{ offered_course.professor.get_full_name }}</a>
+            <a href="{% url 'faculty' offered_course.professor.id %}">{{ offered_course.professor.get_full_name }}</a>
+        </li>
+        <li>
+            <a href="mailto: {{ offered_course.professor.email }}">Mail</a>
         </li>
     </ul>
     <hr>

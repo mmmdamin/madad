@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 
+from account.models import Professor
+
 from base.models import EducationalYear
 from page.models import OfferedCourse, TERM
 
@@ -80,6 +82,7 @@ def course(request, year_num, term_num, course_num, group_num, item_name=None):
                 'course_page': p,
             })
     if item_name == 'discussion':
+
         return render(
             request,
             'page/discussion.html',
@@ -120,3 +123,41 @@ def course(request, year_num, term_num, course_num, group_num, item_name=None):
                 'offered_courses': offered_courses,
             })
     raise Http404
+
+
+@login_required
+def faculties(request):
+    profs = Professor.objects.all()
+    return render(
+        request,
+        'page/faculties.html',
+        {
+            'profs': profs,
+        })
+
+
+@login_required
+def faculty(request, prof_num):
+    profs = Professor.objects.all()
+    prof_obj = get_object_or_404(Professor, pk=prof_num)
+    return render(
+        request,
+        'page/faculty.html',
+        {
+            'profs': profs,
+            'prof_obj': prof_obj,
+        })
+
+
+@login_required
+def term_year(request, year_num, term_num):
+    offered_courses = OfferedCourse.objects.filter(year__year=year_num, term=term_num).exclude(page=None)
+    return render(
+        request,
+        'page/year_term.html',
+        {
+            'offered_courses': offered_courses,
+            'year_term_list': get_all_term_year(),
+            'year': year_num,
+            'term': list(TERM)[int(term_num) - 1],
+        })

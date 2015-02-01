@@ -14,4 +14,12 @@ urlpatterns = patterns('page.views',
                            'course',
                            name='course_item'),
 
+                       url(
+                           r'^faculties/$',
+                           'faculties',
+                           name='faculties'),
+                       url(
+                           r'^faculty/(?P<prof_num>\d+)$',
+                           'faculty',
+                           name='faculty'),
 )

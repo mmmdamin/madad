@@ -1,0 +1,23 @@
+{% extends '2_col_base.html' %}
+{% load static %}
+{% load gravatar %}
+{% block title %}{{ offered_course }}{% endblock title %}
+
+{% block left_col_title %}
+    Faculties
+{% endblock %}
+{% block left_col %}
+    <ul>
+        {% for prof in profs %}
+            <li>
+                <a href="{% url 'faculty' prof.id %}">
+                    {{ prof.get_full_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block right_col_title %}
+{% endblock %}
+{% block right_col %}
+{% endblock %}
