@@ -16,7 +16,7 @@
                     <div class="panel panel-default panel-background-color">
                         <div class="panel-body">
                             <div class="circle avatar"><img class="circle" src="{% gravatar_url user_email %}"></div>
-                            <span class="user name">{{ user }}</span>
+                            <span class="user name"><a href="{% url 'dashboard' %}">{{ user }}</a></span>
 
                             <div class="user actions pull-right">
                                 <a href="{% url 'password_reset_change' %}">Change Password</a>

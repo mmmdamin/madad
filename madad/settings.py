@@ -106,6 +106,9 @@ STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 TEMPLATE_DIRS = (
@@ -129,12 +132,12 @@ CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     'full_ckeditor': {
         'toolbar': 'Full',
-        'width' : '500',
+        'width': '500',
 
     },
     'basic_ckeditor': {
         'toolbar': 'Basic',
-        'width' : '500',
+        'width': '500',
     },
 }
 

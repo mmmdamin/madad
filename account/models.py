@@ -10,7 +10,7 @@ LEVEL = Choices((1, 'bs'), (2, 'ms'), (3, 'doc'))
 
 
 class Member(AbstractUser):
-    image = models.ImageField(blank=True, null=True, upload_to='images')
+    image = models.ImageField(blank=True, null=True, upload_to='/images')
 
 
 

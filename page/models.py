@@ -19,6 +19,7 @@ class OfferedCourse(models.Model):
     exam_time = models.DateTimeField(null=True, blank=True)
     capacity = models.IntegerField()
     details = models.CharField(max_length=255)
+    students = models.ManyToManyField(Student, null=True, blank=True)
 
     class Meta:
         unique_together = ("course", "group_number", "term", "year")
@@ -63,6 +64,7 @@ class Page(models.Model):
     resources = models.ManyToManyField(Resource)
     teacher_assistant = models.ManyToManyField(Student, through=TeacherAssistant)
     text = RichTextField(config_name='full_ckeditor')
+    image = models.ImageField(upload_to='/courses', null=True, blank=True)
 
 
 class Comment(Logged):
