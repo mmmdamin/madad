@@ -39,7 +39,7 @@ def login(request):
 
 def logout(request):
     dj_logout(request)
-    return redirect('home')
+    return redirect('login')
 
 
 @login_required
@@ -125,9 +125,9 @@ def create_accounts(request):
                                            to=[new_email], body=text_body)
                         msg.send()
                         new_member = Student.objects.create(username=new_username,
-                                                           std_id=new_std_id,
-                                                           email=new_email,
-                                                           password=make_password(new_password))
+                                                            std_id=new_std_id,
+                                                            email=new_email,
+                                                            password=make_password(new_password))
                     except Exception as e:
                         print e
                         message += "%d\n" % i
